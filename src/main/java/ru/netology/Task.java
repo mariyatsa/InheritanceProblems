@@ -3,10 +3,12 @@ package ru.netology;
 import java.util.Objects;
 
 public class Task {
-        protected int id;
-        public boolean matches(String query) {
+    protected int id;
+
+    public boolean matches(String query) {
         return false;
     }
+
     public Task(int id) {
         this.id = id;
     }
@@ -14,10 +16,12 @@ public class Task {
     public int getId() {
         return id;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Task task = (Task) o;
         return id == task.id;
     }
@@ -32,5 +36,4 @@ public class Task {
      * @param query Поисковый запрос
      * @return Ответ на вопрос, подходит ли эта задача под поисковый запрос
      */
-
 }

@@ -3,26 +3,31 @@ import org.testng.annotations.Test;
 import org.testng.internal.junit.ArrayAsserts;
 import ru.netology.*;
 
+import java.util.Arrays;
+
 public class TaskTest {
+    SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");//вызываем класс которому даем данные
+    String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+    Epic epic = new Epic(55, subtasks);
+    Meeting meeting = new Meeting(
+            555,
+            "Выкатка 3й версии приложения",
+            "Приложение НетоБанка",
+            "Во вторник после обеда"
+    );
+
     @Test
     public void searchQuery1() {
-        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");//вызываем класс которому даем данные
-
         Task task = new Task(1);// вызываем класс для теста
         task.matches("Позвонить родителям");//указываем что мы хотим протестировать и даем данные
-
 
         boolean expected = true;
         boolean actual = simpleTask.matches("Позвонить родителям"); // указываем метод где находится ответ
         Assert.assertEquals(expected, actual);
     }
 
-
     @Test
     public void searchQuery2() {
-        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
-        Epic epic = new Epic(55, subtasks);
-
         Task task = new Task(1);
 
         task.matches("Хлеб");
@@ -35,12 +40,6 @@ public class TaskTest {
 
     @Test
     public void searchQuery3() {
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
         Task task = new Task(1);
         task.matches("Во вторник после обеда");
 
@@ -51,12 +50,56 @@ public class TaskTest {
 
     @Test
     public void searchQuery4() {
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
+        Task task = new Task(1);
+        task.equals(1);
+
+        boolean expected = false;
+        boolean actual = task.equals(1);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery5() {
+        Task task = new Task(5);
+        task.hashCode();
+
+        int expected = 5;
+        int actual = task.getId();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery6() {
+        Task task = new Task(55);
+        task.equals(simpleTask);
+        task.equals(epic);
+        task.equals(meeting);
+
+        int expected = epic.getId();
+        int actual = task.getId();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery7() {
+        simpleTask.getTitle();
+
+        String expected = "Позвонить родителям";
+        String actual = simpleTask.getTitle();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery8() {
+        epic.getSubtasks();
+
+        String[] expected = {"Молоко", "Яйца", "Хлеб"};
+        String[] actual = epic.getSubtasks();
+        ArrayAsserts.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery9() {
         Task task = new Task(1);
         task.matches("Приложение НетоБанка");
 
@@ -64,4 +107,44 @@ public class TaskTest {
         boolean actual = meeting.matches("Приложение НетоБанка");
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void searchQuery10() {
+        meeting.getProject();
+
+        String expected = "Приложение НетоБанка";
+        String actual = meeting.getProject();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery11() {
+        meeting.getStart();
+
+        String expected = "Во вторник после обеда";
+        String actual = meeting.getStart();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery12() {
+        meeting.getTopic();
+
+        String expected = "Выкатка 3й версии приложения";
+        String actual = meeting.getTopic();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void searchQuery13() {
+        Task task = new Task(5);
+        task.equals(simpleTask);
+        task.equals(epic);
+        task.equals(meeting);
+
+        int expected = simpleTask.getId();
+        int actual = task.getId();
+        Assert.assertEquals(expected, actual);
+    }
 }
+
