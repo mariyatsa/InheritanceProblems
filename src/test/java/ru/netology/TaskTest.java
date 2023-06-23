@@ -1,7 +1,7 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.internal.junit.ArrayAsserts;
-import ru.netology.*;
+package ru.netology;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -95,7 +95,7 @@ public class TaskTest {
 
         String[] expected = {"Молоко", "Яйца", "Хлеб"};
         String[] actual = epic.getSubtasks();
-        ArrayAsserts.assertArrayEquals(expected, actual);
+       Assert.assertArrayEquals(expected, actual);
     }
 
     @Test

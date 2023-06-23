@@ -1,7 +1,7 @@
-import org.junit.jupiter.api.Assertions;
-import org.testng.annotations.Test;
-import org.testng.internal.junit.ArrayAsserts;
-import ru.netology.*;
+package ru.netology;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 public class TodosTest {
     SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
@@ -13,6 +13,7 @@ public class TodosTest {
             "Приложение НетоБанка",
             "Во вторник после обеда"
     );
+
     @Test
     public void shouldAddThreeTasksOfDifferentType() {
 
@@ -24,8 +25,9 @@ public class TodosTest {
 
         Task[] expected = {simpleTask, epic, meeting};
         Task[] actual = todos.findAll();
-        ArrayAsserts.assertArrayEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldAddThreeTasksOfDifferentType2() {
 
@@ -38,8 +40,9 @@ public class TodosTest {
 
         Task[] expected = {simpleTask};
         Task[] actual = todos.search("Позвонить родителям");
-        ArrayAsserts.assertArrayEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldAddThreeTasksOfDifferentType3() {
 
@@ -52,8 +55,9 @@ public class TodosTest {
 
         Task[] expected = {epic};
         Task[] actual = todos.search("Молоко");
-        ArrayAsserts.assertArrayEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldAddThreeTasksOfDifferentType4() {
 
@@ -66,7 +70,7 @@ public class TodosTest {
 
         Task[] expected = {meeting};
         Task[] actual = todos.search("Выкатка 3й версии приложения");
-        ArrayAsserts.assertArrayEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
 }
 
