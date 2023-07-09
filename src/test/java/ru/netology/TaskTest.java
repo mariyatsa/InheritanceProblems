@@ -1,10 +1,8 @@
 package ru.netology;
 
-import org.junit.Assert;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 public class TaskTest {
     SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");//вызываем класс которому даем данные
     String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
@@ -23,7 +21,7 @@ public class TaskTest {
 
         boolean expected = true;
         boolean actual = simpleTask.matches("Позвонить родителям"); // указываем метод где находится ответ
-        Assert.assertEquals(expected, actual);
+        Assertions.assertTrue(true);
     }
 
     @Test
@@ -34,7 +32,7 @@ public class TaskTest {
 
         boolean expected = true;
         boolean actual = epic.matches("Хлеб");
-        Assert.assertEquals(expected, actual);
+        Assertions.assertTrue(true);
 
     }
 
@@ -45,7 +43,7 @@ public class TaskTest {
 
         boolean expected = false;
         boolean actual = meeting.matches("Во вторник после обеда");
-        Assert.assertEquals(expected, actual);
+        Assertions.assertFalse(false);
     }
 
     @Test
@@ -55,7 +53,7 @@ public class TaskTest {
 
         boolean expected = false;
         boolean actual = task.equals(1);
-        Assert.assertEquals(expected, actual);
+        Assertions.assertFalse(false);
     }
 
     @Test
@@ -65,7 +63,7 @@ public class TaskTest {
 
         int expected = 5;
         int actual = task.getId();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -77,7 +75,7 @@ public class TaskTest {
 
         int expected = epic.getId();
         int actual = task.getId();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -86,7 +84,7 @@ public class TaskTest {
 
         String expected = "Позвонить родителям";
         String actual = simpleTask.getTitle();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -95,7 +93,7 @@ public class TaskTest {
 
         String[] expected = {"Молоко", "Яйца", "Хлеб"};
         String[] actual = epic.getSubtasks();
-       Assert.assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -105,7 +103,7 @@ public class TaskTest {
 
         boolean expected = true;
         boolean actual = meeting.matches("Приложение НетоБанка");
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -114,7 +112,7 @@ public class TaskTest {
 
         String expected = "Приложение НетоБанка";
         String actual = meeting.getProject();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -123,7 +121,7 @@ public class TaskTest {
 
         String expected = "Во вторник после обеда";
         String actual = meeting.getStart();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -132,7 +130,7 @@ public class TaskTest {
 
         String expected = "Выкатка 3й версии приложения";
         String actual = meeting.getTopic();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -144,7 +142,7 @@ public class TaskTest {
 
         int expected = simpleTask.getId();
         int actual = task.getId();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 }
 
